@@ -1,6 +1,7 @@
 # ivit-t dataset format is [index,x1,x2,w,h]
 # PPYolo is coco dataset , and the bbox format is [x1,x2,w,h]
 
+import argparse
 import json
 import os
 import shutil
@@ -29,6 +30,12 @@ def build_argparser():
     Returns:
         ArgumentParser: Configured ArgumentParser object.
     """
+
+    def valid_path(path):
+        if not os.path.exists(path):
+            raise argparse.ArgumentTypeError(f"Invalid path: {path}")
+        return path
+
     parser = ArgumentParser(add_help=False)
     args = parser.add_argument_group("Options")
     args.add_argument(
@@ -45,7 +52,10 @@ def build_argparser():
         help="How many num of dataset you want to create!",
     )
     args.add_argument(
-        "-d", "--dataset", required=True, help="The path of ivit-t format dataset!"
+        "-d",
+        "--dataset",
+        type=valid_path,
+        help="The path of iVIT-T format dataset. Must be a valid path.",
     )
     args.add_argument(
         "-l",
