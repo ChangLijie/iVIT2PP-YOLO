@@ -24,5 +24,9 @@ To run the script, use the following command:
 ```bash
 python3 convert_dataset.py -d <dataset_path> -s <save_dataset_path> [-n <limit_num>] [-l <limit_size>] [-r]
 ```
+<div align="center">
+  <img width="100%" height="100%" src="docs/convert.png">
+</div>
+
 ## Other
 * [Todo](/docs/TODO.md)
